@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from app.views import registro
+from app.views import historial, registro
 from .models import *
 
 # Register your models here.
@@ -15,8 +15,20 @@ class ItemsCarroAdmin(admin.ModelAdmin):
     list_display = ['id','nombreProducto','precioProducto','imagen']
     search_fields = ['id', 'nombreProducto']
     list_per_page = 3
-    
+
+class HistorialAdmin(admin.ModelAdmin):
+    list_display = ['orden','usuario','total','codigo_seg']
+    search_fields = ['orden', 'usuario']
+    list_per_page = 3
+
+class SeguimientoAdmin(admin.ModelAdmin):
+    list_display = ['codigo_seg','estado_seg']
+    search_fields = ['codigo_seg', 'estado_seg']
+    list_per_page = 3
+
 admin.site.register(TipoProducto)
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(ItemsCarro,ItemsCarroAdmin)
 admin.site.register(Usuario)
+admin.site.register(Historial,HistorialAdmin)
+admin.site.register(Seguimiento, SeguimientoAdmin)

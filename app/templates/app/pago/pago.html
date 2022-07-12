@@ -39,25 +39,27 @@
     </nav>
   </header>
   <!--DENTRO DE HEADER VA EL NAVBAR QUE ES LA BARRA DE NAVEGACION SUPERIOR-->
-  <div class="col-sm-8 justify-content-center">
-    <div class="card bg-success justify-content-center" style="width:400px">
-      <div class="card-body">
-        <h3>¡Felicitaciones!</h3>
-      </div>
-    </div>
-    <div class="card justify-content-center" style="width:400px">
-      <div class="card-body">
-        <p>Su compra ha sido registrada.</p>
-        <p>Puede realizar un seguimiento de su compra en el historial de compras.</p>
+  <div class="main">
+    <div class="container d-flex justify-content-center">
+      <div class="row">
+        <div class="container d-flex justify-content-center">
+          <h1 class="text-blanco2 pb-2">¡Compra exitosa!</h1>
+        </div>
 
-        <a href="{% url 'perfilHistorial' %}" class="btn btn-success">Historial</a>
-        <a href="{% url 'index' %}" class="btn btn-info">Volver al inicio</a>
+        <div class="container d-flex justify-content-center">
+          <img src="{% static 'app/img/compralista.png' %} " alt="" width="70%">
+        </div>
+        <ul class="nav d-flex justify-content-center">
+
+          <li class="nav-item d-flex justify-content-center">
+            <a class="nav-link " href="../perfil">Volver al perfil</a>
+          </li>
+        </ul>
       </div>
+
     </div>
-    <br>
-    <br>
+
   </div>
-
 
   <!--Parte final de la pagina el footer-->
   <footer class="py-3 my-4">

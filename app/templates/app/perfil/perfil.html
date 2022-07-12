@@ -38,9 +38,12 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link">Bienvenido, {{ user.username }}</a>
-                          </li>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../tienda">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../suscripcion">Suscribirse</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../agregarpr">Agregar producto</a>
@@ -128,7 +131,8 @@
                                                 tienda</a>
                                         </td>
                                         <td>
-                                            <a href="{% url 'logout' %}" class="btn btn-danger bg-danger">Cerrar sesión</a>
+                                            <a href="{% url 'logout' %}" class="btn btn-danger bg-danger">Cerrar
+                                                sesión</a>
                                         </td>
 
                                     </tr>

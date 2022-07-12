@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 
 from django.shortcuts import render
 from ssl import VERIFY_DEFAULT
@@ -17,6 +17,13 @@ class TipoProductoViewSet(viewsets.ModelViewSet):
     queryset = TipoProducto.objects.all()
     serializer_class = TipoProductoSerializer
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class SuscripcionViewSet(viewsets.ModelViewSet):
+    queryset = Suscripcion.objects.all()
+    serializer_class = SuscripcionSerializer
 
 # Create your views here.
 

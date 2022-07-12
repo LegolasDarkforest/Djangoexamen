@@ -27,3 +27,8 @@ class UsuarioForm(ModelForm):
     class Meta:
         model = Usuario
         fields = ['run','dv','nombre','apellido','edad','comuna','region','direccion','correo','telefono','contrasena', 'imagen']
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username','first_name','last_name','email','password']

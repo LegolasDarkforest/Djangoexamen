@@ -70,7 +70,7 @@
                 <p class="card-text">Stock: {{x.stock}}</p>
               </div>
               <form action="" method="POST">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-center">
                   {% csrf_token %}
                   <input type="hidden" name="codigo" id="codigo" value="{{ x.codigo }}" />
                   <input type="hidden" name="nombre" id="nombre" value="{{ x.nombre }}" />
@@ -83,7 +83,7 @@
                     Agregar al Carrito
                   </button>
 
-                  <a href="../pago" class="btn btn-primary">comprar</a>
+
                 </div>
               </form>
             </div>
@@ -144,6 +144,24 @@
               </div>
 
             </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+        {% for x in listaDeck %}
+        <div class="col-sm-4 justify-content-center d-flex">
+          <!-- el contendido centrado -->
+
+          <div class="m-3 card" style="width: 400px">
+            <!--m-3 separa las cartas para que no queden pegadas-->
+
+            {% if x.image %}
+            <img src="{{ x.image }}" class="img-fluid item-img w-100 mb-3" height="200" />
+            {% else %}
+            <img src="{% static 'app/img/elefante.jpg' %}" class="img-fluid item-img w-100 mb-3" />
+            {% endif %}
+
           </div>
         </div>
 
