@@ -183,6 +183,7 @@ def tienda(request):
 
   return render(request,'app/tienda/Tiendaprincipal.html',datos)
 
+@login_required
 def pago(request):
   carrito = ItemsCarro.objects.all()
  
@@ -216,7 +217,7 @@ def pago(request):
   return redirect(to="carrito")
   
 
-
+@login_required
 def quitar(request, id):
 
   carrito = ItemsCarro.objects.get(id=id)
