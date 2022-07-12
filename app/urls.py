@@ -17,13 +17,15 @@ urlpatterns = [
     path('quitar/<id>', quitar, name='quitar'), 
     path('donacion/', donacion, name='donacion'),     
     path('perfil/', perfil, name='perfil'),
-    path('suscripcion/', suscripcion, name='suscripcion'),
     path('ventas/', ventas, name='ventas'),
     path('agregarpr/', agregarpr,name= "agregarpr"),
     path('modificarpr/<codigo>', modificarpr ,name= "modificarpr"),
     path('listarpr/', listarpr ,name= "listarpr"),
     path('eliminarproducto/<codigo>', eliminarproducto ,name= "eliminarproducto"),
-
+    path('usuarioform/',usuarioform ,name= "usuarioform"),
+    path('suscripcionform/',suscripcionform ,name= "suscripcionform"),
+    path('listaperfil/',listaperfil ,name= "listaperfil"),
+    
    
 ]   
 

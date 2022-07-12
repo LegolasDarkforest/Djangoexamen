@@ -34,6 +34,37 @@ def agregarpr(request):
     return render(request,'app/agregarpr/agregarpr.html', datos)
 
 @login_required
+def usuarioform(request):
+    datos = {
+        'form' : UsuarioForm()
+    }
+    if request.method == 'POST' :
+        formulario = UsuarioForm (request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request,'Usuario guardado correctamente!')
+
+
+    return render(request,'app/usuarioform.html', datos)
+
+
+@login_required
+def suscripcionform(request):
+    datos = {
+        'form' : Suscripcionform()
+    }
+    if request.method == 'POST' :
+        formulario =  Suscripcionform(request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request,'Suscripcion realizada correctamente!')
+
+
+    return render(request,'app/suscripcion/suscripcionform.html', datos)
+
+
+
+@login_required
 def listarpr(request):
     #SE SACA ESTO DE LA TIENDA YA QUE ES EL CICLO FOR
     # ASI MANDAMOS LOS MISMOS DATOS AL LISTAR CON EL JASON (DATOS)
@@ -42,6 +73,19 @@ def listarpr(request):
       'listaProductos' : productosAll
     }
     return render(request,'app/listarpr/listarpr.html',datos)
+
+@login_required
+def listaperfil(request):
+    #SE SACA ESTO DE LA TIENDA YA QUE ES EL CICLO FOR
+    # ASI MANDAMOS LOS MISMOS DATOS AL LISTAR CON EL JASON (DATOS)
+    usuarioall = Usuario.objects.all()
+    datos = {
+      'listaPerfil' : usuarioall
+    }
+    return render(request,'app/perfil/listaperfil.html',datos)
+
+
+
 
 #CAMBIAR LOS ID POR CODIGO
 @login_required
@@ -72,26 +116,28 @@ def eliminarproducto(request,codigo):
 
     return redirect(to="listarpr")
 
+
+
 @login_required
 def carrito(request):
   carrito = ItemsCarro.objects.all()
   total = 0 
-  totalDesc= 0
-  desc=0
+  totalDescuento= 0
+  descuento=0
 
   for aux in carrito:
 
     total += aux.precioProducto 
-    totalDesc += round(aux.precioProducto * 0.95)
-    desc += aux.precioProducto-round(aux.precioProducto*0.95)
+    totalDescuento += round(aux.precioProducto * 0.80)
+    descuento += aux.precioProducto-round(aux.precioProducto*0.80)
 
 
   datos = {
 
     'listaCarrito' : carrito,
     'total' : total,
-    'totalDesc' : totalDesc,
-    'desc' : desc
+    'totalDesc' : totalDescuento,
+    'desc' : descuento
   }
 
   if request.method == 'POST':
@@ -101,57 +147,6 @@ def carrito(request):
     carrito.delete()
 
   return render (request, 'app/carrito.html', datos)
-
-def pago(request):
-  carrito = ItemsCarro.objects.all()
- 
-  total = 0 
-  totalDesc= 0
-  desc = 0
- 
-
-  for aux in carrito:
-
-
-    total += aux.precioProducto 
-    totalDesc += round(aux.precioProducto * 0.95)
-    desc += aux.precioProducto-round(aux.precioProducto*0.95)
-
-
-  datos = {
-
-    
-    carrito : 'carrito',
-    
-  }
-
-  
-
-  if totalDesc > 0:
-
-    carrito.delete()
-    return render (request, 'app/pago/pago.html', datos)
-    
-  return redirect(to="carrito")
-  
-
-
-def quitar(request, id):
-
-  carrito = ItemsCarro.objects.get(id=id)
-  carrito.delete()
-
-  return redirect(to="carrito")
-  
-@login_required
-def pagar(request):
-
-  return render(request, 'app/pago/pagar.html')
-
-def total(request):
-  carrito = ItemsCarro.objects.all()
-  datos = { 'listaCarrito' : carrito}
-
 
 @login_required
 def tienda(request):
@@ -188,6 +183,59 @@ def tienda(request):
 
   return render(request,'app/tienda/Tiendaprincipal.html',datos)
 
+def pago(request):
+  carrito = ItemsCarro.objects.all()
+ 
+  total = 0 
+  totalDescuento= 0
+  descuento = 0
+ 
+
+  for aux in carrito:
+
+
+    total += aux.precioProducto 
+    totalDescuento += round(aux.precioProducto * 0.80)
+    descuento += aux.precioProducto-round(aux.precioProducto*0.80)
+
+
+  datos = {
+
+    
+    carrito : 'carrito',
+    
+  }
+
+  
+
+  if totalDescuento > 0:
+
+    carrito.delete()
+    return render (request, 'app/pago/pago.html', datos)
+    
+  return redirect(to="carrito")
+  
+
+
+def quitar(request, id):
+
+  carrito = ItemsCarro.objects.get(id=id)
+  carrito.delete()
+
+  return redirect(to="carrito")
+  
+@login_required
+def pagar(request):
+
+  return render(request, 'app/pago/pagar.html')
+
+def total(request):
+  carrito = ItemsCarro.objects.all()
+  datos = { 'listaCarrito' : carrito}
+
+
+
+
 def nosotros(request):
     return render(request,'app/nosotros/nosotros.html')
 
@@ -196,17 +244,7 @@ def nosotros(request):
 def donacion(request):
     return render(request,'app/donacion/suspago.html')
 
-def suscripcion(request):
-    usuario = Suscripcion.objects.all()
-    datos = {
-        'usuario' : usuario
-    }
-    if request.method == 'POST':
-        usuarios = Suscripcion()
-        usuarios.nombre = request.POST.get('username')
-        usuarios.estado = request.POST.get('boolean')
-        usuarios.save()
-    return render (request, 'app/suscripcion/suscripcion.html', datos)
+
 
 
 def registro(request):

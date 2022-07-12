@@ -43,7 +43,10 @@
                             <a class="nav-link" href="../tienda">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../suscripcion">Suscribirse</a>
+                            <a class="nav-link" href="../suscripcionform">Suscribirse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../usuarioform">Crear usuario</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../agregarpr">Agregar producto</a>
@@ -76,38 +79,22 @@
                         <div class="col-sm-4">
                             <div class="card shadow-sm">
 
-                                <img src="{% static 'app/img/ChrisEvans.jpg' %}" alt="" height="500" width="100%">
+                                <img src="{% static 'app/img/welcome.jpg' %}" alt="" height="500" width="100%">
 
                             </div>
                         </div>
                         <div class="col-sm-8 d-flex justify-content-center">
                             <table class="table">
-                                <thead>
-                                    <tr class="table-success">
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>RUT</th>
-                                        <th>Dirección</th>
-                                        <th>Celular</th>
-                                        <th>E-mail</th>
-                                        <th>Suscrito</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Orlando</td>
-                                        <td>Echeverria</td>
-                                        <td>20.636.722-9</td>
-                                        <td>Av. México 0653</td>
-                                        <td>+56999568420</td>
-                                        <td>orly@duocuc.cl</td>
-                                        <td>No estás suscrito</td>
-                                    </tr>
-                                </tbody>
+
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <a href="../historial" class="btn btn-success bg-success">Historial de
+                                            <a href="../listaperfil" class="btn btn-success bg-success">Informacion
+                                                perfil
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="../historial" class="btn btn-success bg-success">Historial
                                                 compras</a>
                                         </td>
                                         <td>
@@ -115,17 +102,14 @@
                                                 ventas</a>
                                         </td>
                                         <td>
-                                            <a href="../seguimiento" class="btn btn-success bg-success"
-                                                data-bs-toggle="modal" data-bs-target="#myModal">Seguimiento de
+                                            <a href="../seguimiento" class="btn btn-success bg-success">Seguimiento de
                                                 pedido</a>
                                         </td>
                                         <td>
-                                            <a href="../suscripcion" class="btn btn-success bg-success">Suscribirse con
+                                            <a href="../donacion" class="btn btn-success bg-success">Suscribirse Y
                                                 donación</a>
                                         </td>
-                                        <td>
-                                            <a href="#" class="btn btn-success bg-success">Deshabilitar suscripción</a>
-                                        </td>
+
                                         <td>
                                             <a href="../tienda" class="btn btn-success bg-success">Direccionar a la
                                                 tienda</a>
@@ -145,65 +129,18 @@
 
             </div>
         </section>
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Iniciar sesión</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
+        <!--Parte final de la pagina el footer-->
+        <footer class=" py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Inicio</a></li>
+                <li class="nav-item"><a href="nosotros/nosotros.html" class="nav-link px-2 text-muted">Nosotros</a></li>
 
-                    <!-- Modal body -->
-                    <div class="modal-body text-center">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-8">
-                                    <form action="../seguimiento" method="GET">
-                                        <div class="form-group">
-                                            <label for="pedido">Numero de pedido:</label>
-                                            <input placeholder="Ej: 333444555666" class="form-control" type="text"
-                                                name="pedido" id="pedido">
-
-                                        </div>
-
-                                        <div class=" m-3 d-flex justify-content-between">
-                                            <button type="submit" class="btn btn-success " name="btnAceptar"
-                                                id="btnEnviar"> Aceptar</button>
-                                            <button type="reset" class="btn btn-danger" name="btnBorrar"
-                                                id="btnLimpiar">Borrar</button>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!--Parte final de la pagina el footer-->
-    <footer class=" py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Inicio</a></li>
-            <li class="nav-item"><a href="nosotros/nosotros.html" class="nav-link px-2 text-muted">Nosotros</a></li>
-
-        </ul>
-        <p class="text-center text-muted">&copy; 2022 Fundación "El Jardincito", Inc</p>
-    </footer>
-    <!--Parte final de la pagina el footer-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            </ul>
+            <p class="text-center text-muted">&copy; 2022 Fundación "El Jardincito", Inc</p>
+        </footer>
+        <!--Parte final de la pagina el footer-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 
