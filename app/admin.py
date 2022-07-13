@@ -3,9 +3,6 @@ from django.contrib import admin
 from app.views import historial, registro, usuarioform ,suscripcionform,seguimiento
 from .models import *
 
-# Register your models here.
-#SE AGREGARON DOS CAMPOS NUEVOS QUE SON LAS FECHAS HAY QUE AGREGARLAS
-#para que se vea en el admin
 class ProductoAdmin(admin.ModelAdmin):
     list_display = ['codigo','nombre','marca','precio','stock','tipo', 'imagen','created_at','updated_at']
     search_fields = ['codigo']
@@ -20,8 +17,6 @@ class SuscripcionAdmin(admin.ModelAdmin):
     list_display = ['rut_usuario','nombre_usuario','correo_usuario']
     search_fields = ['rut_usuario', 'nombre_usuario']
     list_per_page = 3
-
-
 
 
 

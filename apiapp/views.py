@@ -7,7 +7,7 @@ from app.models import *
 from .serializers import *
 from rest_framework import viewsets
 
-#Se encarga de mostrar el QUERY en el API
+
 
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
@@ -25,5 +25,5 @@ class SuscripcionViewSet(viewsets.ModelViewSet):
     queryset = Suscripcion.objects.all()
     serializer_class = SuscripcionSerializer
 
-# Create your views here.
+
 

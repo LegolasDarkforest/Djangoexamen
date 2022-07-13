@@ -66,8 +66,7 @@ def suscripcionform(request):
 
 @login_required
 def listarpr(request):
-    #SE SACA ESTO DE LA TIENDA YA QUE ES EL CICLO FOR
-    # ASI MANDAMOS LOS MISMOS DATOS AL LISTAR CON EL JASON (DATOS)
+  
     productosAll = Producto.objects.all()
     datos = {
       'listaProductos' : productosAll
@@ -76,8 +75,7 @@ def listarpr(request):
 
 @login_required
 def listaperfil(request):
-    #SE SACA ESTO DE LA TIENDA YA QUE ES EL CICLO FOR
-    # ASI MANDAMOS LOS MISMOS DATOS AL LISTAR CON EL JASON (DATOS)
+    
     usuarioall = Usuario.objects.all()
     datos = {
       'listaPerfil' : usuarioall
@@ -87,10 +85,9 @@ def listaperfil(request):
 
 
 
-#CAMBIAR LOS ID POR CODIGO
 @login_required
 def modificarpr(request,codigo):
-  # SECCION MODIFICAR
+  
   producto = Producto.objects.get(codigo=codigo)
   datos = {
 
@@ -229,6 +226,7 @@ def quitar(request, id):
 def pagar(request):
 
   return render(request, 'app/pago/pagar.html')
+
 
 def total(request):
   carrito = ItemsCarro.objects.all()
